@@ -1,0 +1,10 @@
+idf_component_register(
+    SRCS
+        "ESP32-C5-DevKit-Lipo.c"
+    INCLUDE_DIRS
+        "."
+    PRIV_REQUIRES
+        driver
+        esp_system
+        freertos
+)
