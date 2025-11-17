@@ -69,31 +69,6 @@
     "version": 3
   },
   "project": {
-    "files": [
-      {
-        "name": "ESP32-C5-DevKit-Lipo_Rev_A.kicad_sch",
-        "open": true,
-        "window": {
-          "display": 0,
-          "maximized": true,
-          "pos_x": 70,
-          "pos_y": 469,
-          "size_x": 1846,
-          "size_y": 611
-        }
-      },
-      {
-        "name": "ESP32-C5-DevKit-Lipo_Rev_A.kicad_pcb",
-        "open": true,
-        "window": {
-          "display": 0,
-          "maximized": true,
-          "pos_x": 159,
-          "pos_y": 157,
-          "size_x": 1280,
-          "size_y": 484
-        }
-      }
-    ]
+    "files": []
   }
 }

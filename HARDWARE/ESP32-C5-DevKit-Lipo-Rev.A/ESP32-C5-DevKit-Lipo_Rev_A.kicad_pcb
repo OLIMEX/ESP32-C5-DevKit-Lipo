@@ -3421,7 +3421,7 @@
         (effects (font (size 0.762 0.762) (thickness 0.1905)) (justify mirror))
       (tstamp df2b1a79-44e9-4ef8-8655-42098699987d)
     )
-    (fp_text value "1k/R0402" (at 0 -1.5) (layer "B.Fab")
+    (fp_text value "0R/R0402" (at 0 -1.5) (layer "B.Fab")
         (effects (font (size 1.27 1.27) (thickness 0.254)) (justify mirror))
       (tstamp 012f5061-a2da-4ecf-bb8f-ff1c41ee064f)
     )

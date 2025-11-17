@@ -15302,7 +15302,7 @@
     (property "Reference" "R21" (at 146.05 337.82 0)
       (effects (font (size 1.27 1.27)))
     )
-    (property "Value" "1k/R0402" (at 146.05 342.9 0)
+    (property "Value" "0R/R0402" (at 146.05 342.9 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Footprint" "OLIMEX_RLC-FP:R_0402_5MIL_DWS" (at 146.05 342.138 0)
