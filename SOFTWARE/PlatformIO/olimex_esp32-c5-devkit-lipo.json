@@ -1,0 +1,44 @@
+{
+  "build": {
+    "core": "esp32",
+    "cpu": "esp32c5",
+    "f_cpu": "160000000L",
+    "mcu": "esp32c5",
+    "variant": "esp32c5",
+    "flash_mode": "dio",
+
+    "psram_type": "opi",
+
+    "extra_flags": [
+      "-DBOARD_HAS_PSRAM",
+      "-DARDUINO_USB_MODE=1",
+      "-DARDUINO_USB_CDC_ON_BOOT=1"
+    ]
+  },
+
+  "connectivity": [
+    "wifi",
+    "bluetooth"
+  ],
+
+  "debug": {
+    "openocd_target": "esp32c5.cfg"
+  },
+
+  "frameworks": [
+    "arduino",
+    "espidf"
+  ],
+
+  "name": "Olimex ESP32-C5-DevKit-Lipo",
+
+  "upload": {
+    "flash_size": "8MB",
+    "maximum_ram_size": 524288,
+    "maximum_size": 8388608,
+    "require_upload_port": true,
+    "speed": 921600
+  },
+
+  "vendor": "Olimex"
+}

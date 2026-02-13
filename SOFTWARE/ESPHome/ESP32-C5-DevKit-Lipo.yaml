@@ -1,0 +1,131 @@
+esphome:
+  name: esp32-c5-devkit-lipo
+  friendly_name: ESP32-C5-DevKit-Lipo
+
+esp32:
+  board: esp32-c5-devkitc-1
+  variant: esp32c5
+  framework:
+    type: arduino
+
+psram:
+  mode: opi
+
+# ============================================================
+# LOGGING / CONTROL (Native USB)
+# ============================================================
+logger:
+
+api:
+ota:
+captive_portal:
+
+wifi:
+  ssid: "YOUR_SSID"
+  password: "YOUR_PASSWORD"
+  ap:
+    ssid: "ESP32-C5-DevKit-Lipo Fallback"
+    password: "12345678"
+
+# ============================================================
+# USER LED — GPIO27
+# ============================================================
+output:
+  - platform: gpio
+    pin: GPIO27
+    id: user_led_output
+
+light:
+  - platform: binary
+    name: "ESP32-C5-DevKit-Lipo User LED"
+    output: user_led_output
+
+# ============================================================
+# BOOT BUTTON — GPIO28
+# ============================================================
+binary_sensor:
+  - platform: gpio
+    name: "ESP32-C5-DevKit-Lipo Boot Button"
+    pin:
+      number: GPIO28
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+      - light.toggle: user_led_output
+
+# ============================================================
+# UEXT I2C — GPIO3 SCL / GPIO2 SDA
+# ============================================================
+i2c:
+  sda: GPIO2
+  scl: GPIO3
+  scan: true
+
+# ============================================================
+# UEXT SPI BUS
+# ============================================================
+spi:
+  clk_pin: GPIO1
+  mosi_pin: GPIO7
+  miso_pin: GPIO8
+
+# Chip select available:
+# GPIO0
+
+# ============================================================
+# UEXT UART — GPIO5 TX / GPIO4 RX
+# ============================================================
+uart:
+  - id: uext_uart
+    tx_pin: GPIO5
+    rx_pin: GPIO4
+    baud_rate: 115200
+
+# ============================================================
+# CH340 USB-UART (GPIO11 TX / GPIO12 RX)
+# DO NOT use these pins for peripherals
+# ============================================================
+
+# ============================================================
+# OPTIONAL — BATTERY VOLTAGE (GPIO6)
+# Enable only if jumpers BAT_PWR_E1 and BAT_SENSE_E1 are closed
+# ============================================================
+# sensor:
+#   - platform: adc
+#     pin: GPIO6
+#     name: "ESP32-C5-DevKit-Lipo Battery Voltage"
+#     attenuation: 11db
+#     update_interval: 30s
+#     unit_of_measurement: "V"
+#     accuracy_decimals: 2
+#     device_class: voltage
+#     state_class: measurement
+
+# ============================================================
+# OPTIONAL — EXTERNAL POWER SENSE (GPIO9)
+# Enable only if jumper PWR_SENS_E1 is closed
+# ============================================================
+# binary_sensor:
+#   - platform: gpio
+#     name: "ESP32-C5-DevKit-Lipo External Power"
+#     pin:
+#       number: GPIO9
+#       mode: input
+
+# ============================================================
+# HARDWARE NOTES — ESP32-C5-DevKit-Lipo
+# ============================================================
+# Native USB is active by default.
+# CH340 USB uses:
+#   TX = GPIO11
+#   RX = GPIO12
+#
+# Do not attach peripherals to GPIO11/12 if using CH340.
+#
+# GPIO0 is SPI CS — avoid pulling LOW at boot.
+# GPIO28 is boot button.
+# ESP_EN is hardware reset (not GPIO).
+#
+# 8MB Flash / 4MB PSRAM (OPI mode).
